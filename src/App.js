@@ -6,6 +6,7 @@ import MovieSearch from "./MovieSearch/MovieSearch";
 import Genre from "./Genre/Genre";
 import BottomMenu from "./BottomNav/BottomMenu";
 import NewMovies from "./NewMovies/NewMovies";
+import Sidebar from "./Sidebar/Sidebar";
 
 const routes = [
   {
@@ -36,8 +37,7 @@ function App() {
       {" "}
       {/* Wrap your App component with Router */}
       <div className="App">
-        <Navbar />
-
+        <Sidebar />
         <Routes>
           {routes.map((route, index) => (
             <Route key={index} path={route.path} element={route.element} />

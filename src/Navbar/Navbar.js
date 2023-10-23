@@ -50,7 +50,7 @@ const Navbar = () => {
             </span>
           </a>
 
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             {!isInputVisible && (
               <button
                 onClick={generateRandomNumber}
@@ -73,7 +73,6 @@ const Navbar = () => {
               />
             )}
 
-            {/* Genre Picker */}
 
             <select
               value={selectedGenre}
@@ -109,7 +108,7 @@ const Navbar = () => {
               onClick={handleSearchClick}
             />
           </div>
-        </div>
+        */}</div> 
       </nav>
     </div>
   );
