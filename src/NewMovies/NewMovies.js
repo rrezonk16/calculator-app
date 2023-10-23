@@ -3,13 +3,13 @@ import axios from 'axios';
 
 const baseImageUrl = 'https://image.tmdb.org/t/p/w500'; // Base URL for images
 
-const MovieDetailsComponent = () => {
+const NewMovies = () => {
   const [movieData, setMovieData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://api.themoviedb.org/3/movie/now_playing', {
+        const response = await axios.get('https://api.themoviedb.org/3/movie/upcoming', {
           headers: {
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NGY2NjMzMGQwYTI1ZDNhMTk4OThjNGU3NmJhNDk0ZCIsInN1YiI6IjY0MmQ2OTVlNTRhOGFjMGIzNDg0OGRhYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ejjVsib_TIM3-7xEd4WTXJ7j7YwHHNT9qh3iAd-KstY'
           }
@@ -35,7 +35,7 @@ const MovieDetailsComponent = () => {
 
   return (
     <div className='mb-20 '>
-      <h1 className="px-4 py-4 text-2xl font-bold movie-card md:px-9">Now Playing Movies</h1>
+      <h1 className="px-4 py-4 text-2xl font-bold movie-card md:px-9">Coming soon</h1>
       <div className="flex flex-wrap border-t-2">
         {movieData.map((movie) => (
           <div key={movie.id} className="w-1/2 px-4 py-4 md:w-1/4 xl:w-1/6 movie-card md:p-9">
@@ -63,4 +63,4 @@ const MovieDetailsComponent = () => {
   );
 };
 
-export default MovieDetailsComponent;
+export default NewMovies;

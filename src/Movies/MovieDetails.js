@@ -3,11 +3,7 @@ import { useParams } from "react-router-dom";
 import plus from "../plus.svg";
 import minus from "../minus.svg";
 
-
 const baseImageUrl = "https://image.tmdb.org/t/p/w500"; // Base URL for images
-
-
-
 
 const MovieDetails = () => {
   const { id } = useParams(); // Retrieve the id from URL params
@@ -26,15 +22,17 @@ const MovieDetails = () => {
             },
           }
         );
-        console.log("Movie details:", response);
-
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
+        console.log(response);
+       
 
         const data = await response.json();
-        console.log("Movie details data:", data);
-        setMovieData(data);
+        if (data && data.id) {
+          setMovieData(data);
+        } else {
+          // Movie not found, refresh the page with a random ID
+          const randomId = Math.floor(Math.random() * 400000); // Replace with your logic for generating a random ID
+          window.location.href = `/movies/${randomId}`;
+        }
       } catch (error) {
         console.error("Error fetching movie details:", error);
       }
@@ -55,9 +53,10 @@ const MovieDetails = () => {
   };
 
   return (
-    <div>
+    <div className='mb-20 '>
       {movieData ? (
         <div className="flex flex-col md:flex-row">
+          
           <div className="w-full md:w-1/2">
             <p className="px-4 pt-2 text-2xl font-bold">{movieData.title}</p>
             <p className="px-4 pb-2 text-lg text-gray-400 ">
@@ -146,8 +145,7 @@ const MovieDetails = () => {
                   <img className="w-5" src={plus} alt="plus" />
                 </button>
               </div>
-            
-          </div>
+            </div>
 
             <button className="px-4 py-2 mt-4 bg-blue-600 rounded-lg shadow-2xl hover:shadow-none text-slate-100">
               Buy now
@@ -156,6 +154,7 @@ const MovieDetails = () => {
         </div>
       ) : (
         <p>Loading movie details...</p>
+
       )}
     </div>
   );

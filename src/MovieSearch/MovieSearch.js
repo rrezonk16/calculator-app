@@ -43,7 +43,7 @@ const MovieSearch = () => {
   };
 
   return (
-    <div>
+    <div className='mb-20 '>
       <h1 className="px-4 py-4 text-2xl font-bold movie-card md:px-9">Search Results for "{searchTerm}"</h1>
       <div className="flex flex-wrap border-t-2">
         {movieData.map((movie) => (
