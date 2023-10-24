@@ -84,7 +84,8 @@ const Navbar = () => {
               WatchMe
             </span>
           </a>
-          <div className="flex flex-row gap-6">
+          <div className="hidden md:block">
+          <div className="flex flex-row gap-6 ">
           <button
             data-tooltip-target="tooltip-settings"
             type="button"
@@ -161,11 +162,12 @@ const Navbar = () => {
             />
           </button>
           </div>
+          </div>
           
           <div className="flex items-center">
-            <div class=" relative mx-auto text-gray-600">
+            <div className="relative mx-auto text-gray-600 ">
               <input
-                class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+                className="w-48 h-10 px-5 pr-10 text-sm bg-white border-2 border-gray-300 rounded-lg  md:w-56 focus:outline-none"
                 type="search"
                 name="search"
                 placeholder="Search movies"
@@ -175,11 +177,11 @@ const Navbar = () => {
               />
               <button
                 type="submit"
-                class="absolute right-0 top-0 mt-3 mr-4"
+                className="absolute top-0 right-0 mt-3 mr-4"
                 onClick={handleSearchClick}
               >
                 <svg
-                  class="text-gray-600 h-4 w-4 fill-current"
+                  className="w-4 h-4 text-gray-600 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   version="1.1"
                   id="Capa_1"
