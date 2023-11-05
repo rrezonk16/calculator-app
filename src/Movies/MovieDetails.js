@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import plus from "../plus.svg";
 import minus from "../minus.svg";
+import Loading from "../Loading/Loading";
 
 const baseImageUrl = "https://image.tmdb.org/t/p/w500"; // Base URL for images
 
@@ -153,8 +154,7 @@ const MovieDetails = () => {
           </div>
         </div>
       ) : (
-        <p>Loading movie details...</p>
-
+<Loading/>
       )}
     </div>
   );

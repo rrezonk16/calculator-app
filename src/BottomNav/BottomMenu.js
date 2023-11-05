@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import spark from "../Navbar/spark.png";
-import trending from "./trending.svg";
+import dev from "./dev.svg";
 import "../Loading/Loading.css";
 import newIcon from "./new.svg";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
@@ -163,13 +163,15 @@ const BottomMenu = () => {
             <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
           <button
+                        onClick={() => navigateTo("/developer")}
+
             data-tooltip-target="tooltip-profile"
             type="button"
             className="inline-flex flex-col items-center justify-center px-5 rounded-r-full hover:bg-gray-50 group"
           >
             <img
               alt="icons"
-              src={trending}
+              src={dev}
               className="w-5 h-5 mb-1 text-gray-500 group-hover:text-blue-600 "
             />
             <span className="sr-only">Profile</span>

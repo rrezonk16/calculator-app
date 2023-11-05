@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import spark from "../Navbar/spark.png";
-import trending from "./trending.svg";
+import dev from "./dev.svg";
 import "../Loading/Loading.css";
 import newIcon from "./new.svg";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
@@ -90,7 +90,7 @@ const Navbar = () => {
             data-tooltip-target="tooltip-settings"
             type="button"
             className="inline-flex flex-col items-center justify-center px-5 hover-bg-gray-50 group"
-            onClick={toggleSettingsModal}
+            onClick={() => navigateTo("/")}
           >
             <svg
               className="w-5 h-5 text-white cursor-pointer fill-current "
@@ -107,7 +107,7 @@ const Navbar = () => {
             data-tooltip-target="tooltip-settings"
             type="button"
             className="inline-flex flex-col items-center justify-center px-5 hover-bg-gray-50 group"
-            onClick={toggleSettingsModal}
+            onClick={() => navigateTo("/new-releases")}
           >
             <img
               alt="icons"
@@ -120,7 +120,7 @@ const Navbar = () => {
               onClick={() => navigateTo("/movies/1234")}
               data-tooltip-target="tooltip-new"
               type="button"
-              className="inline-flex items-center justify-center h-10 px-3 font-medium text-white ease-out bg-blue-600 border-2 border-blue-600 rounded-full hover:border-2 hover:border-yellow-300 group focus:ring-4 focus:ring-blue-300 focus:outline-none"
+              className="  inline-flex items-center justify-center h-10 px-3 font-medium text-white ease-out bg-blue-600 border-2 border-blue-600 rounded-full hover:border-2 hover:border-yellow-300 group focus:ring-4 focus:ring-blue-300 focus:outline-none"
             >
              RANDOM <img alt="icons" src={spark} className="w-5 h-5 ml-2 " />
             </button>
@@ -153,11 +153,11 @@ const Navbar = () => {
             data-tooltip-target="tooltip-settings"
             type="button"
             className="inline-flex flex-col items-center justify-center px-5 hover-bg-gray-50 group"
-            onClick={toggleSettingsModal}
-          >
+            onClick={() => navigateTo("/developer")}
+            >
           <img
               alt="icons"
-              src={trending}
+              src={dev}
               className="w-5 h-5 mb-1 text-white-500 "
             />
           </button>
@@ -167,7 +167,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <div className="relative mx-auto text-gray-600 ">
               <input
-                className="w-48 h-10 px-5 pr-10 text-sm bg-white border-2 border-gray-300 rounded-lg  md:w-56 focus:outline-none"
+                className="w-48 h-10 px-5 pr-10 text-sm bg-white border-2 border-gray-300 rounded-lg md:w-56 focus:outline-none"
                 type="search"
                 name="search"
                 placeholder="Search movies"
@@ -200,6 +200,27 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+      {isSettingsModalOpen && (
+        <div class="modal-for-genre">
+          <div class="modal-for-genre-content">
+            <div>
+              <ul>
+                {genres.map((genre) => (
+                     <Link to={`/genre/${genre.id}`}>
+                  <li
+                    className="p-2 my-2 border-2 hover:bg-gray-500 text-white border-gray-200 rounded-md"
+                    key={genre.id}
+                    onClick={closeSettingsModal}
+                  >
+                 {genre.name}
+                  </li>
+                  </Link>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

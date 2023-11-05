@@ -6,6 +6,7 @@ import MovieSearch from "./MovieSearch/MovieSearch";
 import Genre from "./Genre/Genre";
 import BottomMenu from "./BottomNav/BottomMenu";
 import NewMovies from "./NewMovies/NewMovies";
+import Dev from "./Developer/Dev";
 
 const routes = [
   {
@@ -28,6 +29,11 @@ const routes = [
     path: "/new-releases",
     element: <NewMovies />,
   },
+  {
+    path: "/Developer",
+    element: <Dev />,
+  },
+
 
 ];
 function App() {
