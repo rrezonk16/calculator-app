@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Loading from '../Loading/Loading';
-
+import arrow from "../arrow.svg"
 const baseImageUrl = 'https://image.tmdb.org/t/p/w500'; // Base URL for images
 
 const Genre = () => {
@@ -115,11 +115,13 @@ const Genre = () => {
 
   const handleNextPage = () => {
     setPage(page + 1);
+    window.scrollTo(0, 0);
   };
 
   const handlePrevPage = () => {
     if (page > 1) {
       setPage(page - 1);
+      window.scrollTo(0, 0);
     }
   };
   useEffect(() => {
@@ -159,9 +161,10 @@ const Genre = () => {
           </div>
         ))}
       </div>
-      <div className="text-center my-4">
-        <button onClick={handlePrevPage}>Previous</button>
-        <button onClick={handleNextPage}>Next</button>
+      <div className="text-center my-4 gap-4 flex justify-center">
+        <button onClick={handlePrevPage}><img src={arrow} alt='arrow' className=' w-6 rotate-180'></img></button>
+        <p>{page}</p>
+        <button onClick={handleNextPage}><img src={arrow} alt='arrow' className=' w-6'></img></button>
       </div>
     </div>
         

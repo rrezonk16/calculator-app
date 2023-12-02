@@ -41,7 +41,7 @@ function App() {
     <Router>
       {" "}
       {/* Wrap your App component with Router */}
-      <div className="App">
+      <div className="App bg-white">
         <Navbar />
 
         <Routes>

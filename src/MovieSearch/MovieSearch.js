@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import logo from "../default.png";
 
 const baseImageUrl = 'https://image.tmdb.org/t/p/w500';
 
@@ -51,8 +52,12 @@ const MovieSearch = () => {
             <a href={`/movies/${movie.id}`}>
               <div className="movie-card-inner">
                 <div className="movie-card-front">
-                  <img
-                    src={`${baseImageUrl}${movie.poster_path}`}
+                <img
+                    src={
+                      movie.poster_path
+                        ? `${baseImageUrl}${movie.poster_path}`
+                        : logo
+                    }
                     alt="Movie Poster"
                     className="w-full mb-2 rounded-lg"
                   />

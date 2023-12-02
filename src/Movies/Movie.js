@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import logo from "../default.png";
 
-const baseImageUrl = 'https://image.tmdb.org/t/p/w500'; // Base URL for images
+const baseImageUrl = "https://image.tmdb.org/t/p/w500"; // Base URL for images
 
 const MovieDetailsComponent = () => {
   const [movieData, setMovieData] = useState([]);
@@ -9,15 +10,19 @@ const MovieDetailsComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://api.themoviedb.org/3/movie/now_playing', {
-          headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NGY2NjMzMGQwYTI1ZDNhMTk4OThjNGU3NmJhNDk0ZCIsInN1YiI6IjY0MmQ2OTVlNTRhOGFjMGIzNDg0OGRhYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ejjVsib_TIM3-7xEd4WTXJ7j7YwHHNT9qh3iAd-KstY'
+        const response = await axios.get(
+          "https://api.themoviedb.org/3/movie/now_playing",
+          {
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NGY2NjMzMGQwYTI1ZDNhMTk4OThjNGU3NmJhNDk0ZCIsInN1YiI6IjY0MmQ2OTVlNTRhOGFjMGIzNDg0OGRhYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ejjVsib_TIM3-7xEd4WTXJ7j7YwHHNT9qh3iAd-KstY",
+            },
           }
-        });
-        console.log('Movie data:', response.data);
+        );
+        console.log("Movie data:", response.data);
         setMovieData(response.data.results);
       } catch (error) {
-        console.error('Error fetching movie data:', error);
+        console.error("Error fetching movie data:", error);
       }
     };
 
@@ -34,27 +39,38 @@ const MovieDetailsComponent = () => {
   };
 
   return (
-    <div className='mb-20 '>
-      <h1 className="px-4 py-4 text-2xl font-bold movie-card md:px-9">Now Playing Movies</h1>
+    <div className="mb-20 ">
+      <h1 className="px-4 py-4 text-2xl font-bold movie-card md:px-9">
+        Now Playing Movies
+      </h1>
       <div className="flex flex-wrap border-t-2">
         {movieData.map((movie) => (
-          <div key={movie.id} className="w-1/2 px-4 py-4 md:w-1/4 xl:w-1/6 movie-card md:p-9">
+          <div
+            key={movie.id}
+            className="w-1/2 px-4 py-4 md:w-1/4 xl:w-1/6 movie-card md:p-9"
+          >
             <a href={`/movies/${movie.id}`}>
-            <div className="movie-card-inner">
-              <div className="movie-card-front">
+              <div className="movie-card-inner">
+                <div className="movie-card-front">
                 <img
-                  src={`${baseImageUrl}${movie.poster_path}`}
-                  alt="Movie Poster"
-                  className="w-full mb-2 rounded-lg"
-                />
-              </div>
-              <div className="movie-card-back">
-                <h2 className="text-lg font-semibold">{movie.title}</h2>
-                <p className="text-gray-700">Rating: {movie.vote_average}</p>
-                <p className="text-gray-700">{formatReleaseDate(movie.release_date)}</p>
+                    src={
+                      movie.poster_path
+                        ? `${baseImageUrl}${movie.poster_path}`
+                        : logo
+                    }
+                    alt="Movie Poster"
+                    className="w-full mb-2 rounded-lg"
+                  />
 
+                </div>
+                <div className="movie-card-back">
+                  <h2 className="text-lg font-semibold">{movie.title}</h2>
+                  <p className="text-gray-700">Rating: {movie.vote_average}</p>
+                  <p className="text-gray-700">
+                    {formatReleaseDate(movie.release_date)}
+                  </p>
+                </div>
               </div>
-            </div>
             </a>
           </div>
         ))}
