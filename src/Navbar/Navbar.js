@@ -70,10 +70,7 @@ const Navbar = () => {
     }
   };
 
-  const generateRandomNumber = () => {
-    const randomNum = Math.floor(Math.random() * 400000);
-    window.location.href = `/movies/${randomNum}`;
-  };
+
 
   return (
     <div>
@@ -208,7 +205,7 @@ const Navbar = () => {
                 {genres.map((genre) => (
                      <Link to={`/genre/${genre.id}`}>
                   <li
-                    className="p-2 my-2 border-2 hover:bg-gray-500 text-white border-gray-200 rounded-md"
+                    className="p-2 my-2 border-2 hover:bg-gray-200 text-black border-gray-200 rounded-md"
                     key={genre.id}
                     onClick={closeSettingsModal}
                   >

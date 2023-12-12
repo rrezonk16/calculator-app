@@ -28,9 +28,10 @@
   z-index: 1000;
   height: 70%;
   overflow: auto;
+  color: black;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0,1);
   backdrop-filter: blur(10px); /* Add the blur effect */
-  background-color: rgba(109, 105, 105, 0.5);
+  background-color: rgba(188, 185, 185, 0.5);
 }
 
 /* Add padding or margin to center the content within the modal */
